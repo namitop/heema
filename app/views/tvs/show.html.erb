@@ -1,0 +1,20 @@
+<div class="row">
+  <aside class="col-md-4">
+    <section class="tv_info">
+      <%= render 'shared/tv_info' %>
+    </section>
+    <% if @user==current_user %>
+      <section class="tvshow_form">
+        <%= render 'shared/tvshow_form' %>
+      </section>
+    <% end %>
+  </aside>
+  <div class="col-md-8">
+    <% if @tv.tvshows.any? %>
+      <h3>Tvshows (<%= @tv.tvshows.count %>)</h3>
+      <ol class="tvshows">
+        <%= render @tvshows %>
+      </ol>
+    <% end %>
+  </div>
+</div>

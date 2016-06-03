@@ -1,0 +1,11 @@
+<li id="tvshow-<%= tvshow.id %>">
+  <span class="video_url"><%= tvshow.video_url %></span>
+  <span class="introduction"><%= tv.introduction %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(tv.created_at) %> ago.
+    <% if current_user == @tv.user %>
+      <%= link_to "delete", tvshow, method: :delete,
+                                       data: { confirm: "You sure?" } %>
+    <% end %>
+  </span>
+</li>

@@ -1,0 +1,9 @@
+<%= form_for(@tv) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_area :title, placeholder: "[title]" %>
+    <%= f.text_area :introduction, placeholder: "[introduction]" %>
+    <%= f.number_field :theme_color, placeholder: "[theme_color]" %>
+  </div>
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>

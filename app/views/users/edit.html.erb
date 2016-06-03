@@ -1,0 +1,26 @@
+<h1><%= @page_title="Setting" %></h1>
+<%= form_for(@user) do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+
+  <%= f.label :introduction %>
+  <%= f.text_field :introduction %>
+  
+  <%= f.label :theme_color %>
+  <%= f.text_field :theme_color %>
+  
+  <%= f.label :password_for_edit, "OLD password" %>
+  <%= f.password_field :password_for_edit %>
+
+  <%= f.label :new_password, "NEW password" %>
+  <%= f.password_field :new_password %>
+
+  <%= f.label :new_password_confirmation, "Confirmation(NEW password)" %>
+  <%= f.password_field :new_password_confirmation %>
+  
+  <%= f.submit "Done Profile Setting", class: "btn btn-large btn-primary" %>
+<% end %>

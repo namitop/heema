@@ -11,7 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160530064601) do
+ActiveRecord::Schema.define(version: 20160531100038) do
+
+  create_table "tvs", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "introduction"
+    t.integer  "theme_color"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "tvs", ["user_id", "created_at"], name: "index_tvs_on_user_id_and_created_at"
+  add_index "tvs", ["user_id"], name: "index_tvs_on_user_id"
+
+  create_table "tvshows", force: :cascade do |t|
+    t.integer  "tv_id"
+    t.string   "introduction"
+    t.text     "video_url"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "tvshows", ["tv_id", "created_at"], name: "index_tvshows_on_tv_id_and_created_at"
+  add_index "tvshows", ["tv_id"], name: "index_tvshows_on_tv_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
