@@ -4,7 +4,7 @@ class TvsController < ApplicationController
   
   def show
     @tv = Tv.find(params[:id])
-    @tvshows = @tv.tvshows.order(created_at: :desc)
+    @tvshows = @tv.tvshows.order(created_at: :asc)
     @tvshow = @tv.tvshows.build
     @user = @tv.user
   end
@@ -24,7 +24,7 @@ class TvsController < ApplicationController
     @tv = current_user.tvs.find_by(id: params[:id])
     return redirect_to user_url(params[:id]) if @tv.nil?
     @tv.destroy
-    flash[:success] = "Micropost deleted"
+    flash[:success] = "Tv deleted"
     redirect_to request.referrer || current_user
   end
   

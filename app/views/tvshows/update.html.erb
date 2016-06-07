@@ -1,0 +1,24 @@
+<li id="tvshow-<%= @tvshow.id %>">
+    <div class="video-container"><%= raw @tvshow.video_url  %></div>
+    <span class="introduction"><%= @tvshow.introduction %></span>
+    <span class="timestamp">
+      Posted <%= @tvshow.created_at %>
+    </span>
+    
+    <%= form_for @tvshow do |f| %>
+      <div class="field">
+        <%= f.hidden_field :video_url, :value => @tvshow.video_url %>
+        <%= f.hidden_field :introduction, :value => @tvshow.introduction  %>
+        <%= f.hidden_field :tv_id, :value => @tvshow.tv.id %>
+        <%= f.hidden_field :front_tvshow_id, :value => @tvshow.id %>
+      </div>
+      <%= f.submit "再生", class: "btn btn-primary btn-block" %>
+    <% end %>
+    
+    <% if current_user == @tv.user %>
+      <%= form_for @tvshow, html: {method: "delete"}  do |f| %>
+        <%= f.hidden_field :tv_id, :value => @tv.id %>
+        <%= f.submit %>
+      <% end %>
+    <% end %>
+</li>

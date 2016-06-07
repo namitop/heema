@@ -183,6 +183,24 @@ aside {
       margin-top: 0px;
     }
   }
+  .tvshows{
+    
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      padding-top: 30px; height: 0; overflow: hidden;
+    }
+    
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  
+
 }
 
 .gravatar {
@@ -193,3 +211,22 @@ aside {
 .gravatar_edit {
   margin-top: 15px;
 }
+
+/* video responsive */
+.front-tvshow{
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px; height: 0; overflow: hidden;
+  }
+  
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+

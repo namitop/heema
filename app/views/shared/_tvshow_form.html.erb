@@ -3,6 +3,7 @@
   <div class="field">
     <%= f.text_area :video_url, placeholder: "[video_url]" %>
     <%= f.text_area :introduction, placeholder: "[introduction]" %>
+    <%= f.hidden_field :tv_id, :value => @tvshow.tv.id %>
   </div>
   <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>

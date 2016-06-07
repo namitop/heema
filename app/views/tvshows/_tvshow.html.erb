@@ -1,11 +1,24 @@
 <li id="tvshow-<%= tvshow.id %>">
-  <span class="video_url"><%= tvshow.video_url %></span>
-  <span class="introduction"><%= tv.introduction %></span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(tv.created_at) %> ago.
-    <% if current_user == @tv.user %>
-      <%= link_to "delete", tvshow, method: :delete,
-                                       data: { confirm: "You sure?" } %>
+    <div class="video-container"><%= raw tvshow.video_url  %></div>
+    <span class="introduction"><%= tvshow.introduction %></span>
+    <span class="timestamp">
+      Posted <%= tvshow.created_at %>
+    </span>
+    
+    <%= form_for tvshow do |f| %>
+      <div class="field">
+        <%= f.hidden_field :video_url, :value => tvshow.video_url %>
+        <%= f.hidden_field :introduction, :value => tvshow.introduction  %>
+        <%= f.hidden_field :tv_id, :value => tvshow.tv.id %>
+        <%= f.hidden_field :front_tvshow_id, :value => tvshow.id %>
+      </div>
+      <%= f.submit "再生", class: "btn btn-primary btn-block" %>
     <% end %>
-  </span>
+    
+    <% if current_user == @tv.user %>
+      <%= form_for tvshow, html: {method: "delete"}  do |f| %>
+        <%= f.hidden_field :tv_id, :value => @tv.id %>
+        <%= f.submit %>
+      <% end %>
+    <% end %>
 </li>

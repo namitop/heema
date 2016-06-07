@@ -1,3 +1,7 @@
+@tvshow<%= @tvshow %>
+@tvshow.id<%= @tvshow.id %>
+@tvshow.video_url<%= @tvshow.video_url %>
+
 <div class="row">
   <aside class="col-md-4">
     <section class="tv_info">
@@ -8,13 +12,20 @@
         <%= render 'shared/tvshow_form' %>
       </section>
     <% end %>
-  </aside>
-  <div class="col-md-8">
     <% if @tv.tvshows.any? %>
       <h3>Tvshows (<%= @tv.tvshows.count %>)</h3>
       <ol class="tvshows">
         <%= render @tvshows %>
       </ol>
+    <% end %>
+  </aside>
+  <div class="col-md-8">
+    <% if @tv.tvshows.any? %>
+      <div class="front-tvshow">
+        <%# if !(@tvshow.empty?) %>
+          <%= render partial: 'tvshows/tvshow', locals: { tvshow: @tvshow } %>
+        <%# end %>
+      </div>
     <% end %>
   </div>
 </div>
